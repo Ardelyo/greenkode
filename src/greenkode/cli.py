@@ -44,25 +44,33 @@ def check(file_path: str = typer.Argument(..., help="Path to the Python file to 
     if not suggestions:
         console.print(Panel("[bold green]✅ Clean Code![/bold green]\nNo obvious energy inefficiencies detected.", border_style="green"))
     else:
-        table = Table(title="[bold yellow]⚠️ Potential Inefficiencies Detected[/bold yellow]", border_style="yellow")
-        table.add_column("Issue Type", style="cyan", no_wrap=True)
-        table.add_column("Suggestion", style="white")
+        table = Table(title="[bold yellow]⚠️ Potential Inefficiencies Detected[/bold yellow]", border_style="yellow", show_lines=True)
+        table.add_column("ID", style="dim", no_wrap=True)
+        table.add_column("Severity", style="bold")
+        table.add_column("Issue & Location", style="white")
+        table.add_column("Remediation", style="green")
 
-        for tip in suggestions:
-            # Simple parsing to categorize (for demo purposes)
-            issue_type = "Optimization"
-            if "Nested loop" in tip:
-                issue_type = "Complexity (O(n^2))"
-            elif "Heavy library" in tip:
-                issue_type = "Memory/Import"
+        for issue in suggestions:
+            # Color code severity
+            severity = issue['severity']
+            sev_style = "red" if severity == "High" else ("yellow" if severity == "Medium" else "blue")
             
-            table.add_row(issue_type, tip)
+            table.add_row(
+                issue['id'],
+                f"[{sev_style}]{severity}[/{sev_style}]",
+                f"Line {issue['line']}: {issue['message']}",
+                issue['remediation']
+            )
 
         console.print(table)
         console.print("\n[dim]Tip: Use 'greenkode run' to measure actual energy usage.[/dim]")
 
 @app.command()
-def run(file_path: str = typer.Argument(..., help="Path to the Python file to execute.")):
+def run(
+    file_path: str = typer.Argument(..., help="Path to the Python file to execute."),
+    region: str = typer.Option(None, "--region", "-r", help="ISO code of the region (e.g., 'US', 'ID') for carbon intensity."),
+    simulate: bool = typer.Option(False, "--simulate", "-s", help="Force simulation mode (useful if no hardware sensors).")
+):
     """
     Execute a Python file and measure its carbon footprint.
     """
@@ -72,9 +80,16 @@ def run(file_path: str = typer.Argument(..., help="Path to the Python file to ex
 
     console.print(Panel(f"[bold blue]🚀 GreenKode Live Audit[/bold blue]\nTarget: [cyan]{file_path}[/cyan]", border_style="blue"))
     
+    if simulate:
+        console.print("[bold yellow]⚠️  Running in SIMULATION mode. Results are estimates.[/bold yellow]")
+
     # Initialize Engine
     engine = GreenEngine()
-    engine.start_tracking(project_name=f"CLI Run: {os.path.basename(file_path)}")
+    engine.start_tracking(
+        project_name=f"CLI Run: {os.path.basename(file_path)}",
+        region=region,
+        simulate=simulate
+    )
 
     try:
         with console.status(f"[bold green]Executing {file_path}...[/bold green]", spinner="runner"):

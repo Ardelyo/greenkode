@@ -1,0 +1,30 @@
+[
+  {
+    "id": "GK001",
+    "name": "Nested Loop",
+    "severity": "High",
+    "description": "Nested loop detected. This likely indicates O(n^{depth}) complexity.",
+    "remediation": "Consider vectorization (e.g., NumPy) or using a hash map (dict/set) to optimize lookup times."
+  },
+  {
+    "id": "GK002",
+    "name": "Heavy Import",
+    "severity": "Medium",
+    "description": "Heavy library '{library}' imported.",
+    "remediation": "Ensure you are using this library efficiently. If you only need a small part, consider a lighter alternative or lazy loading."
+  },
+  {
+    "id": "GK003",
+    "name": "Inefficient String Concatenation",
+    "severity": "Medium",
+    "description": "Inefficient string concatenation (s += ...) detected inside a loop.",
+    "remediation": "Strings are immutable. Use ''.join(list) or io.StringIO to avoid creating a new string object for every iteration."
+  },
+  {
+    "id": "GK004",
+    "name": "Regex in Loop",
+    "severity": "Medium",
+    "description": "Regex function 're.{func}' called inside a loop.",
+    "remediation": "Regex compilation is expensive. Compile the pattern once outside the loop using 'pattern = re.compile(...)'."
+  }
+]
