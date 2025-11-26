@@ -62,3 +62,10 @@ GreenKode bukan sekadar alat; ini adalah perubahan pola pikir. Dengan membuat ef
 
 ---
 *Diajukan untuk Kompetisi Video Siswa World of 8 Billion.*
+
+---
+
+## 🔗 Lihat Juga
+- [**🚀 Panduan Memulai**](GETTING_STARTED.md)
+- [**🏗️ Arsitektur**](ARCHITECTURE.md)
+- [**🤝 Berkontribusi**](CONTRIBUTING.md)

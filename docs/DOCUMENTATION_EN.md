@@ -62,3 +62,10 @@ GreenKode is not just a tool; it is a mindset shift. By making energy efficiency
 
 ---
 *Submitted for the World of 8 Billion Student Video Contest.*
+
+---
+
+## 🔗 See Also
+- [**🚀 Getting Started**](GETTING_STARTED.md)
+- [**🏗️ Architecture**](ARCHITECTURE.md)
+- [**🤝 Contributing**](CONTRIBUTING.md)

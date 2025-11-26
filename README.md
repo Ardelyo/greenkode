@@ -68,12 +68,17 @@ GreenKode leverages **Intel RAPL (Running Average Power Limit)** sensors to meas
 **Competition:** [World of 8 Billion](https://www.worldof8billion.org/) (Energy & Climate Change)
 
 ### 📚 Documentation / Dokumentasi
-For judges and technical reviewers, please see the detailed whitepapers:
 
-- [**📄 English Documentation (Whitepaper)**](docs/DOCUMENTATION_EN.md)
-    - *Comprehensive technical overview and impact analysis.*
-- [**📄 Dokumentasi Bahasa Indonesia**](docs/DOCUMENTATION_ID.md)
-    - *Penjelasan lengkap dalam Bahasa Indonesia.*
+We have comprehensive documentation for users, developers, and judges:
+
+#### 🏁 For Users
+- [**🚀 Getting Started**](docs/GETTING_STARTED.md): Installation, usage, and troubleshooting.
+
+#### 🧠 For Developers & Judges
+- [**📄 Technical Whitepaper (English)**](docs/DOCUMENTATION_EN.md): Deep dive into the problem, solution, and impact.
+- [**📄 Kertas Putih Teknis (Bahasa Indonesia)**](docs/DOCUMENTATION_ID.md): Penjelasan lengkap dalam Bahasa Indonesia.
+- [**🏗️ Architecture**](docs/ARCHITECTURE.md): System design and component interaction.
+- [**🤝 Contributing**](docs/CONTRIBUTING.md): How to build and contribute to GreenKode.
 
 ---
 <div align="center">
